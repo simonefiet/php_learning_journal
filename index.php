@@ -7,10 +7,10 @@
     if (isset($_POST['delete'])) {
         if (deleteItem(filter_input(INPUT_POST, 'delete', FILTER_SANITIZE_NUMBER_INT))) {
 
-            header('location: index.php?msg=Task');
+            header('location: index.php?msg=Entry deleted');
             exit;
         } else {
-            header('location: index.php?msg=Unable');
+            header('location: index.php?msg=Unable to delete this entry');
             exit;
         }
     }
@@ -28,7 +28,7 @@
         <div class="entry-list">
             <?php 
             if (isset($error_message)) {
-                echo '<p class="message">' . $error_message . '</p>';
+                echo '<p class="message">' . $error_message . '<a href="index.php" class="close">x</a></p>';
             }
             ?>
 
@@ -44,13 +44,18 @@
                             <?php echo $item_title; ?>
                         </a>
                     </h2>
-                    <time datetime="<?php echo $item_date; ?>">
-                        <?php echo date("F j, Y", strtotime($item_date)); ?>
-                    </time> 
-                    <form method="POST" action="index.php" onsubmit="return confirm('Are you sure you want to delete this?');">
-                        <input type="hidden" value="<?php echo $id; ?>" name="delete">
-                        <input type="submit" value="Delete Entry" class="button">
-                    </form>
+                    <div class="flex-container">
+                        <time datetime="<?php echo $item_date; ?>">
+                            <?php 
+                                echo date("F j, Y ", strtotime($item_date)); 
+                                echo " | ";
+                            ?>
+                        </time> 
+                        <form method="POST" action="index.php" onsubmit="return confirm('Are you sure you want to delete this?');">
+                            <input type="hidden" value="<?php echo $id; ?>" name="delete">
+                            <input type="submit" value="Delete Entry" class="delete">
+                        </form>
+                    </div>
                 </article>
             <?php }  //Loop end?>
         </div>

@@ -187,7 +187,7 @@ ul li a {
 }
 
 .message {
-	width: 100%;
+	width: calc(100% - 20px);
 	padding: 8px 10px 6px 10px;
 	background: #678f89;
 	border: 2px solid #678f89;
@@ -197,10 +197,30 @@ ul li a {
 	position: relative;
 	text-align: left;
 	font-size: 14px;
-	margin-bottom: 20px;
+	margin-bottom: 40px;
+	transition: ease .3s;
+}
+.message .close {
+    position: absolute;
+    right: 15px;
+    top: 7px;
+    color: #FFF;
 }
 
+.flex-container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
 
+.delete {
+	display: inline-block;
+	border: none;
+	transition: ease .3s;
+}
+.delete:hover {
+	color: red;
+}
 
 /* ==========================================================================
    Form Styles

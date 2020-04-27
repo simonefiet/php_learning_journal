@@ -47,8 +47,7 @@
     </div>
     <div class="edit">
         <p>
-            <a href="edit.php?id=<?php echo $id; ?>">Edit Entry</a> | 
-            <a href="#">Delete Entry</a>
+            <a href="edit.php?id=<?php echo $id; ?>">Edit Entry</a>
         </p>
     </div>
 </section>
